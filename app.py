@@ -16,10 +16,23 @@ def process_inscription_form():
     mot_de_passe = request.form.get('mdp')
     mdp_conf = request.form.get('mdp_conf')
 
-    # Ici, vous pouvez traiter les données du formulaire, par exemple, en les enregistrant dans une base de données ou en effectuant des vérifications.
+    if mot_de_passe==mdp_conf:
+        f'Inscription réussie pour {name}.'
+        return render_template('HTML/connexion.html')
+    return render_template('HTML/inscription.html') 
 
-    # Pour l'instant, nous allons simplement renvoyer un message de réussite à l'utilisateur.
-    return f'Inscription réussie pour {name}. Votre email est {email}, votre numéro est {numero} et votre mot de passe est {mot_de_passe}.'
+
+@app.route('/connexion', methods=['GET', 'POST'])
+def connexion_form():
+    email = request.form.get('mail')
+    mot_de_passe = request.form.get('mdp')
+
+    if email==email and mot_de_passe==mot_de_passe:
+        return render_template('HTML/aceil.html')
+    return render_template('HTML/connexion.html')
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
